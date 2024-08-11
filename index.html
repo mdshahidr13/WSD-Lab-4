@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart City Transportation System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <h1>Ranchi Smart City Transportation System</h1>
+        <button onclick="toggleRouteForm()">Show Route</button>
+        <button onclick="showXML()">Show XML Content</button>
+    </header>
+    
+    <div id="routeForm">
+        <input type="text" id="source" placeholder="Enter source location">
+        <input type="text" id="destination" placeholder="Enter destination location">
+        <button onclick="calculateRoute()">Calculate Route</button>
+    </div>
+
+    <div id="map"></div>
+
+    <footer>
+        <p>&copy; 2024 Ranchi Smart City. All Rights Reserved.</p>
+        <p>Mohammad Shahid Raza 1MCA 'A'</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script>
+        let map;
+        let routingControl;
+
+        function initializeMap() {
+            map = L.map('map').setView([12.9716, 77.5946], 12); // Centered on Bengaluru
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+        }
+
+        function toggleRouteForm() {
+            const form = document.getElementById('routeForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function showXML() {
+            window.location.href = 'Ranchi_smartCity.xml'; // Adjust to your XML file path
+        }
+
+        function calculateRoute() {
+            const source = document.getElementById('source').value;
+            const destination = document.getElementById('destination').value;
+
+            const geocoder = L.Control.Geocoder.nominatim();
+
+            geocoder.geocode(source, function(startResults) {
+                if (startResults && startResults.length > 0) {
+                    const startCoord = startResults[0].center;
+
+                    // Add marker for source
+                    L.marker([startCoord.lat, startCoord.lng])
+                        .addTo(map)
+                        .bindPopup('Source: ' + source)
+                        .openPopup();
+
+                    geocoder.geocode(destination, function(endResults) {
+                        if (endResults && endResults.length > 0) {
+                            const endCoord = endResults[0].center;
+
+                            // Add marker for destination
+                            L.marker([endCoord.lat, endCoord.lng])
+                                .addTo(map)
+                                .bindPopup('Destination: ' + destination)
+                                .openPopup();
+
+                            if (routingControl) {
+                                map.removeControl(routingControl);
+                            }
+
+                            routingControl = L.Routing.control({
+                                waypoints: [
+                                    L.latLng(startCoord.lat, startCoord.lng),
+                                    L.latLng(endCoord.lat, endCoord.lng)
+                                ],
+                                routeWhileDragging: false,
+                                lineOptions: {
+                                    styles: [{ color: 'red', weight: 5 }]
+                                },
+                                createMarker: function() {
+                                    return null; // Remove default markers
+                                },
+                                show: false, // Hide route instructions
+                                router: L.Routing.osrmv1({
+                                    serviceUrl: 'https://router.project-osrm.org/route/v1',
+                                    profile: 'car',
+                                    useHints: false
+                                }),
+                                autoRoute: true
+                            }).addTo(map);
+
+                            map.fitBounds(L.latLngBounds([startCoord, endCoord]));
+                        } else {
+                            alert('Destination not found!');
+                        }
+                    });
+                } else {
+                    alert('Source not found!');
+                }
+            });
+        }
+
+        initializeMap();
+    </script>
+</body>
+</html>

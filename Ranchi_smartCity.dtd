@@ -1,0 +1,30 @@
+<!ELEMENT SmartCity (CityName, Vehicle*, Driver*, TrafficSignal*, PublicTransport*, AccidentReport*, ParkingSpot*, TrafficSensor*, Road*, TrafficViolation*)>
+<!ATTLIST SmartCity
+    xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation CDATA #FIXED "Ranchi_smartCity.xsd">
+<!ELEMENT CityName (#PCDATA)>
+<!ELEMENT Vehicle (ID, Type, Owner)>
+<!ELEMENT Driver (ID, Name, LicenseNumber)>
+<!ELEMENT TrafficSignal (ID, Location, Status)>
+<!ELEMENT PublicTransport (Type, RouteNumber, Capacity, DriverID)>
+<!ELEMENT AccidentReport (ReportID, Date, Location, VehicleID)>
+<!ELEMENT ParkingSpot (ID, Location, Capacity)>
+<!ELEMENT TrafficSensor (ID, Location, Type)>
+<!ELEMENT Road (ID, Name, Length)>
+<!ELEMENT TrafficViolation (ID, VehicleID, ViolationType, FineAmount)>
+<!ELEMENT ID (#PCDATA)>
+<!ELEMENT Type (#PCDATA)>
+<!ELEMENT Owner (#PCDATA)>
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT LicenseNumber (#PCDATA)>
+<!ELEMENT Location (#PCDATA)>
+<!ELEMENT Status (#PCDATA)>
+<!ELEMENT RouteNumber (#PCDATA)>
+<!ELEMENT Capacity (#PCDATA)>
+<!ELEMENT DriverID (#PCDATA)>
+<!ELEMENT ReportID (#PCDATA)>
+<!ELEMENT Date (#PCDATA)>
+<!ELEMENT VehicleID (#PCDATA)>
+<!ELEMENT ViolationType (#PCDATA)>
+<!ELEMENT FineAmount (#PCDATA)>
+<!ELEMENT Length (#PCDATA)>

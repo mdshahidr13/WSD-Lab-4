@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="Ranchi_smartCity.xslt"?>
+<!DOCTYPE SmartCity SYSTEM "Ranchi_smartCity.dtd">
+<SmartCity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Ranchi_smartCity.xsd">
+    <CityName>Ranchi</CityName>
+    <Vehicle>
+        <ID>B012</ID>
+        <Type>Bus</Type>
+        <Owner>Ranchi Transport Corporation</Owner>
+    </Vehicle>
+    <Driver>
+        <ID>D2447134</ID>
+        <Name>MOhan Dehury</Name>
+        <LicenseNumber>JH-0020-2134</LicenseNumber>
+    </Driver>
+    <TrafficSignal>
+        <ID>TS001</ID>
+        <Location>Dhurwa Gol Chakkar</Location>
+        <Status>Operational</Status>
+    </TrafficSignal>
+    <PublicTransport>
+        <Type>Bus</Type>
+        <RouteNumber>RNC34B</RouteNumber>
+        <Capacity>80</Capacity>
+        <DriverID>D2447134</DriverID>
+    </PublicTransport>
+    <AccidentReport>
+        <ReportID>AR001</ReportID>
+        <Date>2024-08-07</Date>
+        <Location>Stadium Road</Location>
+        <VehicleID>B012</VehicleID>
+    </AccidentReport>
+    <ParkingSpot>
+        <ID>PS-B12</ID>
+        <Location>Shaheed Maidan</Location>
+        <Capacity>200</Capacity>
+    </ParkingSpot>
+    <TrafficSensor>
+        <ID>TSEN001</ID>
+        <Location>HEC Area</Location>
+        <Type>Speed Sensor</Type>
+    </TrafficSensor>
+    <Road>
+        <ID>R001</ID>
+        <Name>Dhurwa Gol Chakkar</Name>
+        <Length>6</Length>
+    </Road>
+    <TrafficViolation>
+        <ID>TV001</ID>
+        <VehicleID>B012</VehicleID>
+        <ViolationType>Speeding</ViolationType>
+        <FineAmount>1000</FineAmount>
+    </TrafficViolation>
+</SmartCity>

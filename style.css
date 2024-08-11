@@ -1,0 +1,62 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+button {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #d32f2f;
+}
+
+#routeForm {
+  display: none;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#routeForm input {
+  padding: 10px;
+  margin-right: 10px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+#routeForm button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#map {
+  height: 600px;
+  width: 100%;
+}
+
+footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  clear: both;
+}
