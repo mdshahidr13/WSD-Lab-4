@@ -35,7 +35,7 @@
         let routingControl;
 
         function initializeMap() {
-            map = L.map('map').setView([12.9716, 77.5946], 12); // Centered on Bengaluru
+            map = L.map('map').setView([12.9716, 77.5946], 12); 
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap contributors'
@@ -48,7 +48,7 @@
         }
 
         function showXML() {
-            window.location.href = 'Ranchi_smartCity.xml'; // Adjust to your XML file path
+            window.location.href = 'Ranchi_smartCity.xml'; 
         }
 
         function calculateRoute() {
@@ -61,7 +61,6 @@
                 if (startResults && startResults.length > 0) {
                     const startCoord = startResults[0].center;
 
-                    // Add marker for source
                     L.marker([startCoord.lat, startCoord.lng])
                         .addTo(map)
                         .bindPopup('Source: ' + source)
@@ -71,7 +70,6 @@
                         if (endResults && endResults.length > 0) {
                             const endCoord = endResults[0].center;
 
-                            // Add marker for destination
                             L.marker([endCoord.lat, endCoord.lng])
                                 .addTo(map)
                                 .bindPopup('Destination: ' + destination)
@@ -91,9 +89,9 @@
                                     styles: [{ color: 'red', weight: 5 }]
                                 },
                                 createMarker: function() {
-                                    return null; // Remove default markers
+                                    return null; 
                                 },
-                                show: false, // Hide route instructions
+                                show: false, 
                                 router: L.Routing.osrmv1({
                                     serviceUrl: 'https://router.project-osrm.org/route/v1',
                                     profile: 'car',
